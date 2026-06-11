@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Briefcase, Coins, Heart, Activity, Building2, ArrowRight } from "lucide-react";
+import type { Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function Problems() {
@@ -45,11 +46,19 @@ export default function Problems() {
       }
     }
   };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 
   return (
     <section id="problems" className="py-24 bg-white relative overflow-hidden">
