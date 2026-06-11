@@ -4,7 +4,7 @@ import {
   Sparkles, Calendar, Clock, MapPin, User,
   Mail, Phone, Briefcase, FileText,
   CheckCircle2, AlertCircle, X, ArrowRight,
-  HelpCircle, Plus, Minus, ShieldCheck,
+  HelpCircle, Plus, Minus,
 } from "lucide-react";
 
 import { saveLead, updatePaymentStatus } from "../services/leadService";
