@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Outfit", sans-serif;
+
+  --color-gold-50: #FAF7EE;
+  --color-gold-100: #F3ECDC;
+  --color-gold-200: #E6D7BA;
+  --color-gold-300: #D8C093;
+  --color-gold-400: #C5A870;
+  /* Standard Venus Gold */
+  --color-gold-500: #B29154;
+  --color-gold-600: #93733B;
+  --color-gold-700: #715528;
+  --color-gold-800: #503B1C;
+  --color-gold-900: #352611;
+
+  --color-luxury-white: #FCFCF9;
+  --color-luxury-cream: #FAF6ED;
+  --color-luxury-gray: #F5F5F0;
+
+  --animate-shimmer: shimmer 2.5s infinite linear;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-spin-reverse: spin-reverse 50s linear infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes spin-reverse {
+    0% {
+      transform: rotate(360deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+/* Custom Base Layer overrides */
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, #DFBA73 0%, #C59B27 50%, #E7C887 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility bg-gold-gradient {
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+}
+
+@utility bg-gold-light-gradient {
+  background: linear-gradient(135deg, #FCFAF2 0%, #F5EEDC 100%);
+}
+
+@utility bg-luxury-gradient {
+  background: radial-gradient(circle at 50% 50%, #FCFCF9 0%, #F7F5EC 100%);
+}
+
+@utility glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 168, 112, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(113, 85, 40, 0.05);
+}
+
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 168, 112, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(113, 85, 40, 0.04);
+}
+
+@utility border-gold-subtle {
+  border-color: rgba(197, 168, 112, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FCFCF9;
+  font-family: "Outfit", sans-serif;
+  color: #352611;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FCFCF9;
+  font-family: "Outfit", sans-serif;
+  color: #352611;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FCFCF9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E6D7BA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D8C093;
+}
+
+/* Elegant gold divider decoration */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 168, 112, 0.6) 50%, transparent);
+  width: 100%;
+}
+
+/* Star flicker effect */
+.star-glow {
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.6));
+}
