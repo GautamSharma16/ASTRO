@@ -61,7 +61,7 @@ const cardVariants: Variants = {
 };
 
   return (
-    <section id="problems" className="py-24 bg-white relative overflow-hidden">
+    <section id="problems" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
       {/* Decorative Gold Rings */}
       <div className="absolute top-1/2 left-[-10%] w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none" />
       <div className="absolute top-1/4 right-[-5%] w-72 h-72 border border-gold-300/10 rounded-full pointer-events-none" />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function WhyVastu() {
   return (
-    <section id="why-vastu" className="py-24 bg-gold-50/20 relative overflow-hidden border-y border-gold-subtle/30">
+    <section id="why-vastu" className="py-24 bg-gold-50/20 relative overflow-hidden border-y border-gold-subtle/30 scroll-mt-20">
       {/* Astrological compass background line art */}
       <div className="absolute left-[-15%] top-[-10%] w-[500px] h-[500px] opacity-[0.05] pointer-events-none select-none">
         <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.2">

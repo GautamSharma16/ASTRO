@@ -120,7 +120,7 @@ export function TestimonialCard({
 // ---------------------------------------------------------------------------
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
       <div className="absolute top-10 left-10 w-48 h-48 border border-gold-300/10 rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-64 h-64 border border-gold-300/10 rounded-full pointer-events-none" />
 

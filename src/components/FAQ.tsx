@@ -34,7 +34,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-gold-50/10 relative overflow-hidden border-t border-gold-subtle/30">
+    <section id="faq" className="py-24 bg-gold-50/10 relative overflow-hidden border-t border-gold-subtle/30 scroll-mt-20">
       <div className="absolute left-[-10%] top-[30%] w-72 h-72 border border-gold-300/10 rounded-full pointer-events-none" />
       <div className="absolute right-[-10%] bottom-[20%] w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none" />
 

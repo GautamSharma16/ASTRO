@@ -32,7 +32,7 @@ export default function Benefits() {
   ];
 
   return (
-    <section id="benefits" className="py-24 bg-white relative overflow-hidden">
+    <section id="benefits" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
       {/* Decorative astrological circle background */}
       <div className="absolute right-[-10%] top-10 w-80 h-80 border border-gold-300/10 rounded-full pointer-events-none" />
       <div className="absolute left-[-10%] bottom-10 w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none" />

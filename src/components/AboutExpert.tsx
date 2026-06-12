@@ -5,7 +5,7 @@ import AstroLogo from "../assets/astro.webp";
 
 export default function AboutExpert() {
   return (
-    <section id="expert" className="py-24 bg-gold-50/10 relative overflow-hidden border-b border-gold-subtle/30">
+    <section id="expert" className="py-24 bg-gold-50/10 relative overflow-hidden border-b border-gold-subtle/30 scroll-mt-20">
       {/* Decorative celestial background */}
       <div className="absolute right-[-10%] bottom-0 w-80 h-80 bg-gold-100/20 rounded-full blur-3xl pointer-events-none" />
 

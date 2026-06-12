@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import AstroLogo from "../assets/Astro_logo.webp";
+
+import AstroLogo from "../assets/astro.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 glass-panel border-b border-gold-subtle/50 transition-all duration-300">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gold-subtle/50 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
@@ -31,6 +32,7 @@ export default function Navbar() {
               src={AstroLogo}
               alt="Astro Vastu Logo"
               className="h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
+              style={{ display: "block", maxWidth: "180px" }}
             />
           </Link>
 
@@ -100,7 +102,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden glass-panel bg-white border-t border-gold-subtle/50 py-4 px-6 absolute top-full left-0 w-full shadow-lg transition-all duration-300">
+        <div className="md:hidden bg-white border-t border-gold-subtle/50 py-4 px-6 absolute top-full left-0 w-full shadow-lg transition-all duration-300">
           <div className="flex flex-col space-y-4">
             <button
               onClick={() => handleNavClick("problems")}
