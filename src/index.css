@@ -6,134 +6,116 @@
 
   /* Fonts */
   --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "Outfit", sans-serif;
+  --font-sans:  "Outfit", sans-serif;
 
-  /* Champagne Luxury Palette */
-  --color-gold-50: #FAF8F4;
-  --color-gold-100: #F3EEE5;
-  --color-gold-200: #E7DDD0;
-  --color-gold-300: #D8C8B4;
-  --color-gold-400: #C6AF91;
-  --color-gold-500: #B39372;
-  --color-gold-600: #94745A;
-  --color-gold-700: #745846;
-  --color-gold-800: #544035;
-  --color-gold-900: #392B23;
+  /* ── Forest Green Palette ── */
+  --color-green-25:  #F2F7F4;
+  --color-green-50:  #E8F2ED;
+  --color-green-100: #C8DDD3;
+  --color-green-200: #9DC2B2;
+  --color-green-300: #6EA48E;
+  --color-green-400: #4A8870;
+  --color-green-500: #2D6B55;   /* mid forest */
+  --color-green-600: #1E5040;   /* brand green */
+  --color-green-700: #143D30;   /* deep forest */
+  --color-green-800: #0D2E23;   /* navbar / footer bg */
+  --color-green-900: #071A14;   /* darkest */
 
-  /* Backgrounds */
-  --color-luxury-white: #FFFCF8;
-  --color-luxury-cream: #F8F3EC;
-  --color-luxury-gray: #F3EEE7;
+  /* ── Gold Accent Palette (kept from brand logo) ── */
+  --color-gold-50:  #FBF8F1;
+  --color-gold-100: #F3ECD9;
+  --color-gold-200: #E8D9B8;
+  --color-gold-300: #D9C08E;
+  --color-gold-400: #C9A968;
+  --color-gold-500: #B8923F;   /* primary gold CTA */
+  --color-gold-600: #9A7630;
+  --color-gold-700: #7A5C24;
+  --color-gold-800: #5A4219;
+  --color-gold-900: #3C2C10;
 
-  /* Animations */
-  --animate-shimmer: shimmer 2.5s infinite linear;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-spin-slow: spin 40s linear infinite;
+  /* ── Neutral / Surface ── */
+  --color-luxury-white: #FAFDF9;
+  --color-luxury-cream: #F4F9F6;
+  --color-luxury-gray:  #EDF4EF;
+
+  /* ── Animations ── */
+  --animate-shimmer:      shimmer 2.5s infinite linear;
+  --animate-float:        float 6s ease-in-out infinite;
+  --animate-spin-slow:    spin 40s linear infinite;
   --animate-spin-reverse: spin-reverse 50s linear infinite;
 
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-
-    100% {
-      background-position: 200% 0;
-    }
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
   }
-
   @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0);     }
+    50%       { transform: translateY(-10px); }
   }
-
   @keyframes spin-reverse {
-    0% {
-      transform: rotate(360deg);
-    }
-
-    100% {
-      transform: rotate(0deg);
-    }
+    0%   { transform: rotate(360deg); }
+    100% { transform: rotate(0deg);   }
   }
 }
 
-/* =====================================
+/* ======================================================
    Utilities
-===================================== */
+====================================================== */
 
 @utility text-gold-gradient {
-  background: linear-gradient(
-    135deg,
-    #d9c0a3 0%,
-    #b39372 50%,
-    #8f6d52 100%
-  );
+  background: linear-gradient(135deg, #D9C08E 0%, #B8923F 50%, #9A7630 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-@utility bg-gold-gradient {
-  background: linear-gradient(
-    135deg,
-    #f2e8db 0%,
-    #d5b896 50%,
-    #b39372 100%
-  );
-}
-
-@utility bg-gold-light-gradient {
-  background: linear-gradient(
-    135deg,
-    #fffdf9 0%,
-    #f6f0e8 100%
-  );
-}
-
+/* Light section background — very pale green-white */
 @utility bg-luxury-gradient {
-  background:
-    radial-gradient(
-      circle at top center,
-      #fffdfb 0%,
-      #f8f3ec 45%,
-      #f1ebe3 100%
-    );
+  background: radial-gradient(circle at 50% 0%, #F0F8F4 0%, #FAFDF9 60%, #F4F9F6 100%);
 }
 
+/* Deep green section background */
+@utility bg-deep-green {
+  background: linear-gradient(135deg, #0D2E23 0%, #143D30 50%, #1E5040 100%);
+}
+
+/* Frosted glass on light bg */
 @utility glass-panel {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(179, 147, 114, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(180, 145, 60, 0.14);
 }
 
+/* Frosted glass card on light bg */
 @utility glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(179, 147, 114, 0.15);
+  border: 1px solid rgba(180, 145, 60, 0.16);
+}
+
+/* Frosted glass on dark green bg */
+@utility glass-dark {
+  background: rgba(13, 46, 35, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(180, 145, 60, 0.2);
 }
 
 @utility border-gold-subtle {
-  border-color: rgba(179, 147, 114, 0.18);
+  border-color: rgba(180, 145, 60, 0.2);
 }
 
-/* =====================================
+/* ======================================================
    Base
-===================================== */
+====================================================== */
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background: #fffcf8;
-  color: #392b23;
+  background: #FAFDF9;
+  color: #143D30;
   font-family: var(--font-sans);
 }
 
@@ -141,86 +123,62 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: #fffcf8;
-  color: #392b23;
+  background: #FAFDF9;
+  color: #143D30;
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* =====================================
+/* ======================================================
    Typography
-===================================== */
+====================================================== */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: #392b23;
+  color: #143D30;
 }
 
-p,
-span,
-a,
-button,
-input,
-textarea,
-select {
+p, span, a, button, input, textarea, select {
   font-family: var(--font-sans);
 }
 
-/* =====================================
+/* ======================================================
    Scrollbar
-===================================== */
+====================================================== */
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: #F2F7F4; }
+::-webkit-scrollbar-thumb { background: #4A8870; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #2D6B55; }
 
-::-webkit-scrollbar-track {
-  background: #faf8f4;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c6af91;
-  border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b39372;
-}
-
-/* =====================================
-   Decorative Elements
-===================================== */
+/* ======================================================
+   Decorative
+====================================================== */
 
 .gold-divider {
   height: 1px;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(179, 147, 114, 0.55),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(184, 146, 63, 0.5) 50%, transparent);
+}
+
+.green-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(78, 136, 112, 0.4) 50%, transparent);
 }
 
 .star-glow {
-  filter: drop-shadow(
-    0 0 6px rgba(179, 147, 114, 0.25)
-  );
+  filter: drop-shadow(0 0 6px rgba(184, 146, 63, 0.35));
 }
 
-/* =====================================
+/* ======================================================
    Selection
-===================================== */
+====================================================== */
 
 ::selection {
-  background: rgba(179, 147, 114, 0.18);
-  color: #392b23;
+  background: rgba(78, 136, 112, 0.2);
+  color: #0D2E23;
 }

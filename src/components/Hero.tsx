@@ -5,7 +5,7 @@ import heroImg from "../assets/heroimg.png";
 
 export default function Hero() {
   return (
-    <section className="relative bg-luxury-gradient overflow-hidden mt-20 lg:mt-0">
+    <section className="relative bg-luxury-gradient overflow-hidden mt-28 lg:mt-0">
 
       {/* ─── MOBILE layout: stacked (img on top, text below) ─── */}
       <div className="lg:hidden flex flex-col min-h-screen">
@@ -72,7 +72,7 @@ export default function Hero() {
       <div className="hidden lg:flex min-h-screen mt-5">
 
         {/* Left text panel */}
-        <div className="relative z-10 flex flex-col justify-center w-[50%] xl:w-[48%] px-12 xl:px-20 2xl:px-28 pt-32 pb-20">
+        <div className="relative z-10 flex flex-col justify-center w-[50%] xl:w-[48%] px-12 xl:px-20 2xl:px-28 pt-36 pb-20">
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -140,8 +140,8 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right image panel — full bleed */}
-        <div className="absolute inset-y-0 right-0 w-[52%]">
+        {/* Right image panel — starts below navbar (h-28 = 112px) */}
+        <div className="absolute right-0 w-[52%]" style={{ top: "112px", bottom: 0 }}>
           {/* Left edge fade */}
           <div
             className="absolute inset-y-0 left-0 w-40 z-10 pointer-events-none"

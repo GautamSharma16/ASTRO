@@ -134,7 +134,7 @@ export default function Join() {
       {/* ══════════════════════════════════════════════════════════════
           SECTION 1 — VIDEO
       ══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-36 pb-20 px-4 sm:px-6 lg:px-8">
         {/* Decorative rings */}
         <div className="absolute top-[10%] left-[-5%] w-72 h-72 border border-gold-300/10 rounded-full pointer-events-none" />
         <div className="absolute bottom-[10%] right-[-5%] w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none animate-pulse" />
@@ -203,140 +203,7 @@ export default function Join() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
-          SECTION 2 — TESTIMONIALS
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white relative overflow-hidden border-t border-gold-subtle/30">
-        <div className="absolute top-10 left-10 w-48 h-48 border border-gold-300/10 rounded-full pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-64 h-64 border border-gold-300/10 rounded-full pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-          >
-            <div className="inline-flex items-center space-x-2 border-b border-gold-400/30 pb-2">
-              <span className="text-[11px] font-semibold tracking-widest text-gold-700 uppercase">
-                Proven Transformations
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-900 leading-tight">
-              Real Clients. Measurable Miracles.
-            </h2>
-            <p className="text-sm sm:text-base text-gold-900/60 font-light max-w-2xl mx-auto">
-              Read how correcting directional flaws and aligning them with individual charts created immediate breakthroughs.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {reviews.map((rev, idx) => (
-              <TestimonialCard key={idx} rev={rev} idx={idx} animate={true} />
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-16 text-center"
-          >
-            <button
-              onClick={scrollToForm}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-full font-bold tracking-widest text-xs uppercase shadow-[0_8px_24px_rgba(197,145,84,0.3)] hover:shadow-[0_10px_30px_rgba(197,145,84,0.45)] transition-all duration-300 border border-gold-400 hover:scale-[1.03] group cursor-pointer"
-            >
-              <span>Join Now</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          SECTION 3 — FAQ
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-gold-50/20 relative overflow-hidden border-t border-gold-subtle/30">
-        <div className="absolute left-[-10%] top-[30%] w-72 h-72 border border-gold-300/10 rounded-full pointer-events-none" />
-        <div className="absolute right-[-10%] bottom-[20%] w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-          >
-            <div className="inline-flex items-center space-x-2 border-b border-gold-400/30 pb-2">
-              <HelpCircle className="w-4 h-4 text-gold-500" />
-              <span className="text-[11px] font-semibold tracking-widest text-gold-700 uppercase">
-                Got Questions?
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-900 leading-tight">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-sm sm:text-base text-gold-900/60 font-light">
-              Everything you need to know about the science of Astro Vastu and the consultation process.
-            </p>
-          </motion.div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div key={idx} className="bg-white border border-gold-400/15 rounded-2xl overflow-hidden hover:border-gold-400/35 shadow-sm transition-colors duration-300">
-                  <button
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-6 sm:p-8 flex justify-between items-center gap-4 cursor-pointer focus:outline-none"
-                  >
-                    <span className="font-serif text-base sm:text-lg font-medium text-gold-900 pr-2">{faq.q}</span>
-                    <div className="w-8 h-8 rounded-full bg-gold-50 border border-gold-400/20 flex items-center justify-center flex-shrink-0">
-                      {isOpen
-                        ? <Minus className="w-4 h-4 text-gold-600" />
-                        : <Plus className="w-4 h-4 text-gold-600" />
-                      }
-                    </div>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: "easeInOut" }}
-                      >
-                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 text-xs sm:text-sm text-gold-900/70 font-light leading-relaxed border-t border-gold-50">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-16 text-center"
-          >
-            
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          SECTION 4 — CONSULTATION FORM
+          SECTION 2 — CONSULTATION FORM (MOVED HERE)
       ══════════════════════════════════════════════════════════════ */}
       <section
         ref={formRef}
@@ -519,6 +386,139 @@ export default function Join() {
 
             </form>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 3 — TESTIMONIALS
+      ══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 bg-gold-50/10 relative overflow-hidden border-t border-gold-subtle/30">
+        <div className="absolute top-10 left-10 w-48 h-48 border border-gold-300/10 rounded-full pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-64 h-64 border border-gold-300/10 rounded-full pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+          >
+            <div className="inline-flex items-center space-x-2 border-b border-gold-400/30 pb-2">
+              <span className="text-[11px] font-semibold tracking-widest text-gold-700 uppercase">
+                Proven Transformations
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-900 leading-tight">
+              Real Clients. Measurable Miracles.
+            </h2>
+            <p className="text-sm sm:text-base text-gold-900/60 font-light max-w-2xl mx-auto">
+              Read how correcting directional flaws and aligning them with individual charts created immediate breakthroughs.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {reviews.map((rev, idx) => (
+              <TestimonialCard key={idx} rev={rev} idx={idx} animate={true} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <button
+              onClick={scrollToForm}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-full font-bold tracking-widest text-xs uppercase shadow-[0_8px_24px_rgba(197,145,84,0.3)] hover:shadow-[0_10px_30px_rgba(197,145,84,0.45)] transition-all duration-300 border border-gold-400 hover:scale-[1.03] group cursor-pointer"
+            >
+              <span>Join Now</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 4 — FAQ
+      ══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 bg-white relative overflow-hidden border-t border-gold-subtle/30">
+        <div className="absolute left-[-10%] top-[30%] w-72 h-72 border border-gold-300/10 rounded-full pointer-events-none" />
+        <div className="absolute right-[-10%] bottom-[20%] w-96 h-96 border border-gold-300/10 rounded-full pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+          >
+            <div className="inline-flex items-center space-x-2 border-b border-gold-400/30 pb-2">
+              <HelpCircle className="w-4 h-4 text-gold-500" />
+              <span className="text-[11px] font-semibold tracking-widest text-gold-700 uppercase">
+                Got Questions?
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-900 leading-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-sm sm:text-base text-gold-900/60 font-light">
+              Everything you need to know about the science of Astro Vastu and the consultation process.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = activeFaq === idx;
+              return (
+                <div key={idx} className="bg-white border border-gold-400/15 rounded-2xl overflow-hidden hover:border-gold-400/35 shadow-sm transition-colors duration-300">
+                  <button
+                    onClick={() => setActiveFaq(isOpen ? null : idx)}
+                    className="w-full text-left p-6 sm:p-8 flex justify-between items-center gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span className="font-serif text-base sm:text-lg font-medium text-gold-900 pr-2">{faq.q}</span>
+                    <div className="w-8 h-8 rounded-full bg-gold-50 border border-gold-400/20 flex items-center justify-center flex-shrink-0">
+                      {isOpen
+                        ? <Minus className="w-4 h-4 text-gold-600" />
+                        : <Plus className="w-4 h-4 text-gold-600" />
+                      }
+                    </div>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                      >
+                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 text-xs sm:text-sm text-gold-900/70 font-light leading-relaxed border-t border-gold-50">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-16 text-center"
+          >
+            
+          </motion.div>
+
         </div>
       </section>
 
