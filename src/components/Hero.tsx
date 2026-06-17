@@ -46,10 +46,10 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="#problems"
+              href="#expert"
               className="flex items-center justify-center px-7 py-3.5 rounded-full border border-gold-400/40 text-gold-900/70 font-medium tracking-wider text-sm transition-all duration-300"
             >
-              Discover how it works
+              Meet Cosmic Guide
             </a>
           </div>
 
@@ -114,10 +114,10 @@ export default function Hero() {
               {/* <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /> */}
             </Link>
             <a
-              href="#problems"
+              href="#expert"
               className="flex items-center px-7 py-3.5 rounded-full border border-gold-400/40 text-gold-900/70 hover:bg-gold-50/60 hover:text-gold-600 font-medium tracking-wider text-sm transition-all duration-300"
             >
-              Discover how it works
+              Meet Cosmic Guide
             </a>
           </motion.div>
 
