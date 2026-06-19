@@ -1,14 +1,12 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles, Calendar, Clock, MapPin, User,
+  Calendar, Clock, MapPin, User,
   Mail, Phone, Briefcase, FileText,
-  CheckCircle2, AlertCircle, X, ArrowRight,
-  HelpCircle, Plus, Minus,
+  ArrowRight, HelpCircle, Plus, Minus,
 } from "lucide-react";
 
-import { saveLead, updatePaymentStatus } from "../services/leadService";
-import { openRazorpayCheckout, generateMockTransactionId } from "../services/paymentService";
+import { saveLead } from "../services/leadService";
 import { reviews, TestimonialCard } from "../components/Testimonials";
 
 // ---------------------------------------------------------------------------
@@ -36,24 +34,28 @@ const EMPTY_FORM: FormData = {
 
 const faqs = [
   {
+    q: "What birth details are required for the consultation?",
+    a: "To construct your cosmic chart, we require your Full Name, Date of Birth, Time of Birth, and Place of Birth. You will also need to submit an accurate layout map of your house or office, showing the directions, including the Drainage System, Slopes and Fire Zones.",
+  },
+  {
+    q: "How soon can I expect to notice changes?",
+    a: "Most clients report an immediate shift in the house's atmosphere (feelings of lightness, less stress) within 7–10 days of final implementation of Physical Changes. In certain cases, results reflect within 3 weeks of Devta Activation. Physical breakthroughs in career, court cases, cash blockages, or relationship harmony typically manifest between 21 to 45 days after completing the remedies.",
+  },
+  {
+    q: "Do you provide deep consultation on specific issues and concerns?",
+    a: "Absolutely yes, we not only listen to your particular problems and concerns but also offer the most suitable solutions so that you will get quick results.",
+  },
+  {
+    q: "How can Vastu Shastra improve my life?",
+    a: "Vastu Shastra operates as the architectural software for your physical environment. It is the systemic optimization of your commercial or residential space. By mathematically aligning your building's structural geometry with natural magnetic and elemental frequencies, it eliminates environmental friction. Alongside physical layout shifts, it utilizes precise micro-adjustments to neutralize structural imbalances, transforming your space into an optimized asset that actively accelerates your focus, operational efficiency, and financial growth.",
+  },
+  {
     q: "Do your remedies require structural demolition or breaking walls?",
     a: "Absolutely not. We have a strict 'Zero Demolition' policy. Our Astro Vastu remedies are non-destructive and utilize scientific elements: elemental metal strips (copper, brass, lead, iron), color spectrum therapy, precise object relocation, and planetary crystals to re-tune your home's frequency.",
   },
   {
     q: "How does Astro Vastu differ from standard Vastu Shastra?",
     a: "Standard Vastu applies generalized rules (e.g., 'North is always positive for wealth'). Astro Vastu is highly personalized. If your birth chart (Kundli) shows Mercury is in your 12th house (expenditures), activating the North (governed by Mercury) without chart alignment can actually double your losses. We match your home layout specifically to your horoscope.",
-  },
-  {
-    q: "What birth details are required for the consultation?",
-    a: "To construct your cosmic chart, we require your Full Name, Date of Birth, Time of Birth, and Place of Birth. You will also need to submit a rough sketch/layout map of your house or office, showing the directions.",
-  },
-  {
-    q: "How soon can I expect to notice changes?",
-    a: "Most clients report an immediate shift in the house's atmosphere (feelings of lightness, less stress) within 7–10 days. Physical breakthroughs in career, court cases, cash blockages, or relationship harmony typically manifest between 21 to 45 days after completing the remedies.",
-  },
-  {
-    q: "Does Astro Vastu work for rented apartments or offices?",
-    a: "Yes. Vastu energy affects whoever occupies the space, regardless of ownership. Since our remedies involve simple color adjustments, metal wires, or placing objects, they are completely portable and easy to implement in rented properties without modifying the landlord's structure.",
   },
 ];
 
@@ -70,13 +72,7 @@ export default function Join() {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  const [sessionKey, setSessionKey] = useState<string>("");
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showFailedModal, setShowFailedModal] = useState(false);
-  const [showMockPaymentDialog, setShowMockPaymentDialog] = useState(false);
-  const [transactionDetails, setTransactionDetails] = useState({ id: "", amount: "₹4,999" });
 
   const scrollToForm = () =>
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -91,38 +87,16 @@ export default function Join() {
     setLoading(true);
     setStatusMessage("Capturing cosmic details...");
 
-    const key = await saveLead(formData);
-    setSessionKey(key);
-    setStatusMessage("Opening Razorpay Checkout...");
+    await saveLead(formData);
+    setStatusMessage("Redirecting to payment gateway...");
 
-    const result = await openRazorpayCheckout({
-      amountInPaise: 499900,
-      description: "Premium Consultation & Remedies Blueprint",
-      prefill: { name: formData.name, email: formData.email, contact: formData.mobile },
-      notes: { dob: formData.dob, birthTime: formData.birthTime },
-      onSuccess: async (paymentId) => {
-        setTransactionDetails({ id: paymentId, amount: "₹4,999" });
-        await updatePaymentStatus(key, "Paid", paymentId);
-        setShowSuccessModal(true);
-      },
-      onDismiss: async () => {
-        await updatePaymentStatus(key, "Failed", "");
-        setShowFailedModal(true);
-      },
-    });
+    // Build Razorpay Payment Page URL with prefill parameters
+    const paymentUrl = new URL("https://rzp.io/rzp/JZ4kNwc");
+    paymentUrl.searchParams.append("email", formData.email);
+    paymentUrl.searchParams.append("phone", formData.mobile);
+    paymentUrl.searchParams.append("name", formData.name);
 
-    setLoading(false);
-    setStatusMessage("");
-    if (!result.launched) setShowMockPaymentDialog(true);
-  };
-
-  const handleMockPaymentResult = async (status: "Paid" | "Failed") => {
-    setShowMockPaymentDialog(false);
-    const mockTxId = status === "Paid" ? generateMockTransactionId() : "";
-    setTransactionDetails({ id: mockTxId, amount: "₹4,999" });
-    if (sessionKey) await updatePaymentStatus(sessionKey, status, mockTxId);
-    if (status === "Paid") setShowSuccessModal(true);
-    else setShowFailedModal(true);
+    window.location.href = paymentUrl.toString();
   };
 
   // ---------------------------------------------------------------------------
@@ -509,129 +483,8 @@ export default function Join() {
               );
             })}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-16 text-center"
-          >
-            
-          </motion.div>
-
         </div>
       </section>
-
-      {/* ================================================================
-          MODALS
-      ================================================================ */}
-      <AnimatePresence>
-
-        {showSuccessModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full border border-gold-400/30 text-center space-y-6 shadow-2xl">
-              <div className="mx-auto w-16 h-16 rounded-full bg-green-50 border border-green-400/20 flex items-center justify-center">
-                <CheckCircle2 className="w-10 h-10 text-green-600" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-serif text-2xl font-bold text-gold-900">Alignment Initiated!</h3>
-                <p className="text-sm text-gold-900/70 font-light leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. Your payment of <strong>{transactionDetails.amount}</strong> is verified and your slot is confirmed.
-                </p>
-              </div>
-              <div className="p-4 rounded-2xl bg-gold-50/40 border border-gold-400/10 text-left space-y-2 text-xs">
-                <div className="flex justify-between">
-                  <span className="text-gold-900/50">Transaction ID:</span>
-                  <span className="font-mono text-gold-900 font-semibold">{transactionDetails.id}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gold-900/50">Status:</span>
-                  <span className="font-semibold text-green-700">Paid ✓</span>
-                </div>
-              </div>
-              <p className="text-[11px] text-gold-900/50 leading-relaxed font-light">
-                Our team will email a consultation confirmation and house layout request within 15 minutes.
-              </p>
-              <button onClick={() => { setShowSuccessModal(false); window.location.href = "/"; }}
-                className="w-full py-3.5 bg-gold-500 hover:bg-gold-600 text-white rounded-full text-xs font-bold tracking-widest uppercase transition-colors border border-gold-400 cursor-pointer">
-                Return to Home
-              </button>
-            </motion.div>
-          </div>
-        )}
-
-        {showFailedModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full border border-gold-400/30 text-center space-y-6 shadow-2xl relative">
-              <button onClick={() => setShowFailedModal(false)} className="absolute top-4 right-4 text-gold-900/50 hover:text-gold-900 cursor-pointer">
-                <X className="w-5 h-5" />
-              </button>
-              <div className="mx-auto w-16 h-16 rounded-full bg-red-50 border border-red-400/20 flex items-center justify-center">
-                <AlertCircle className="w-10 h-10 text-red-600" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-serif text-2xl font-bold text-red-900">Payment Unsuccessful</h3>
-                <p className="text-sm text-gold-900/70 font-light">The payment was cancelled or failed to process.</p>
-              </div>
-              <div className="p-4 rounded-2xl bg-red-50/10 border border-red-400/10 text-xs text-left space-y-2">
-                <p className="text-red-800/80 font-medium">Your details are already saved. No need to re-enter them.</p>
-                <div className="flex justify-between border-t border-red-100/30 pt-2">
-                  <span className="text-gold-900/50">Status:</span>
-                  <span className="font-semibold text-red-600">Pending Payment</span>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <button onClick={() => setShowFailedModal(false)}
-                  className="flex-1 py-3 bg-gold-50 border border-gold-400/30 hover:bg-gold-100/40 text-gold-900 rounded-full text-xs font-bold tracking-widest uppercase cursor-pointer">
-                  Retry
-                </button>
-                <button onClick={() => { setShowFailedModal(false); window.location.href = "/"; }}
-                  className="flex-1 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-full text-xs font-bold tracking-widest uppercase border border-gold-400 cursor-pointer">
-                  Home
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-
-        {showMockPaymentDialog && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full border border-gold-400/40 text-center space-y-6 shadow-2xl">
-              <div className="flex justify-center items-center space-x-2">
-                <Sparkles className="w-5 h-5 text-gold-500 animate-pulse" />
-                <span className="font-serif text-lg font-bold uppercase tracking-wider text-gold-900">Razorpay Sandbox</span>
-              </div>
-              <div className="gold-divider" />
-              <div className="bg-gold-50/50 p-4 rounded-xl border border-gold-400/10 text-left text-xs space-y-2.5">
-                <div className="flex justify-between">
-                  <span className="text-gold-900/50">Consultant:</span>
-                  <span className="font-semibold text-gold-900">Energy Acharya Shilpa</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gold-900/50">Client:</span>
-                  <span className="font-semibold text-gold-900">{formData.name}</span>
-                </div>
-               
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button onClick={() => handleMockPaymentResult("Paid")}
-                  className="flex-1 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full text-xs font-bold tracking-widest uppercase shadow-md cursor-pointer">
-                  Simulate Success
-                </button>
-                <button onClick={() => handleMockPaymentResult("Failed")}
-                  className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs font-bold tracking-widest uppercase shadow-md cursor-pointer">
-                  Simulate Failure
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-
-      </AnimatePresence>
     </div>
   );
 }

@@ -1,3 +1,7 @@
+/**
+ * @deprecated This component is no longer used in the application.
+ * It has been replaced by the Consultation Process component (Process.tsx).
+ */
 import { motion } from "framer-motion";
 import { TrendingUp, Award, HeartHandshake, ShieldCheck, SunDim, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";

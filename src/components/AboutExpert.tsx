@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, BookOpen, ShieldCheck, ArrowRight } from "lucide-react";
+import { Award, ShieldCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import AstroLogo from "../assets/astro.webp";
 
@@ -84,10 +84,7 @@ export default function AboutExpert() {
                 <Award className="w-5 h-5 text-gold-500 flex-shrink-0" />
                 <span className="text-xs font-semibold text-gold-900">Certified Jyotish Acharya</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <BookOpen className="w-5 h-5 text-gold-500 flex-shrink-0" />
-                <span className="text-xs font-semibold text-gold-900">Author of 3 Cosmic Books</span>
-              </div>
+
               <div className="flex items-center space-x-2">
                 <ShieldCheck className="w-5 h-5 text-gold-500 flex-shrink-0" />
                 <span className="text-xs font-semibold text-gold-900">10,000+ Consultations</span>

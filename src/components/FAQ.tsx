@@ -6,24 +6,28 @@ import { Link } from "react-router-dom";
 export default function FAQ() {
   const faqs = [
     {
+      q: "What birth details are required for the consultation?",
+      a: "To construct your cosmic chart, we require your Full Name, Date of Birth, Time of Birth, and Place of Birth. You will also need to submit an accurate layout map of your house or office, showing the directions, including the Drainage System, Slopes and Fire Zones."
+    },
+    {
+      q: "How soon can I expect to notice changes?",
+      a: "Most clients report an immediate shift in the house's atmosphere (feelings of lightness, less stress) within 7–10 days of final implementation of Physical Changes. In certain cases, results reflect within 3 weeks of Devta Activation. Physical breakthroughs in career, court cases, cash blockages, or relationship harmony typically manifest between 21 to 45 days after completing the remedies."
+    },
+    {
+      q: "Do you provide deep consultation on specific issues and concerns?",
+      a: "Absolutely yes, we not only listen to your particular problems and concerns but also offer the most suitable solutions so that you will get quick results."
+    },
+    {
+      q: "How can Vastu Shastra improve my life?",
+      a: "Vastu Shastra operates as the architectural software for your physical environment. It is the systemic optimization of your commercial or residential space. By mathematically aligning your building's structural geometry with natural magnetic and elemental frequencies, it eliminates environmental friction. Alongside physical layout shifts, it utilizes precise micro-adjustments to neutralize structural imbalances, transforming your space into an optimized asset that actively accelerates your focus, operational efficiency, and financial growth."
+    },
+    {
       q: "Do your remedies require structural demolition or breaking walls?",
       a: "Absolutely not. We have a strict 'Zero Demolition' policy. Our Astro Vastu remedies are non-destructive and utilize scientific elements: elemental metal strips (copper, brass, lead, iron), color spectrum therapy, precise object relocation, and planetary crystals to re-tune your home's frequency."
     },
     {
       q: "How does Astro Vastu differ from standard Vastu Shastra?",
       a: "Standard Vastu applies generalized rules (e.g., 'North is always positive for wealth'). Astro Vastu is highly personalized. If your birth chart (Kundli) shows Mercury is in your 12th house (expenditures), activating the North (governed by Mercury) without chart alignment can actually double your losses. We match your home layout specifically to your horoscope."
-    },
-    {
-      q: "What birth details are required for the consultation?",
-      a: "To construct your cosmic chart, we require your Full Name, Date of Birth, Time of Birth, and Place of Birth. You will also need to submit a rough sketch/layout map of your house or office, showing the directions."
-    },
-    {
-      q: "How soon can I expect to notice changes?",
-      a: "Most clients report an immediate shift in the house's atmosphere (feelings of lightness, less stress) within 7–10 days. Physical breakthroughs in career, court cases, cash blockages, or relationship harmony typically manifest between 21 to 45 days after completing the remedies."
-    },
-    {
-      q: "Does Astro Vastu work for rented apartments or offices?",
-      a: "Yes. Vastu energy affects whoever occupies the space, regardless of ownership. Since our remedies involve simple color adjustments, metal wires, or placing objects, they are completely portable and easy to implement in rented properties without modifying the landlord's structure."
     }
   ];
 

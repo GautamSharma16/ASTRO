@@ -1,7 +1,8 @@
 import Hero from "../components/Hero";
-import Problems from "../components/Problems";
+// import Problems from "../components/Problems";
+import WhatWeDo from "../components/WhatWeDo";
 import WhyVastu from "../components/WhyVastu";
-import Benefits from "../components/Benefits";
+import Process from "../components/Process";
 import AboutExpert from "../components/AboutExpert";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
@@ -13,14 +14,17 @@ export default function Home() {
       {/* Hero section */}
       <Hero />
       
-      {/* Problem awareness section */}
-      <Problems />
+      {/* What We Do section */}
+      <WhatWeDo />
+      
+      {/* Problem awareness section (commented out) */}
+      {/* <Problems /> */}
       
       {/* Why Astro Vastu works section */}
       <WhyVastu />
       
-      {/* Benefits section */}
-      <Benefits />
+      {/* Consultation Process section */}
+      <Process />
       
       {/* About expert section */}
       <AboutExpert />
