@@ -40,10 +40,10 @@ export default function Footer() {
           <div>
             <h3 className="font-serif text-base font-bold uppercase tracking-widest mb-5" style={{ color: "#C9A968" }}>Explore</h3>
             <ul className="space-y-3 text-sm">
-              <li><button onClick={() => handleNavClick("problems")} className="text-left font-light transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Challenges Addressed</button></li>
-              <li><button onClick={() => handleNavClick("why-vastu")} className="text-left font-light transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Scientific Approach</button></li>
-              <li><button onClick={() => handleNavClick("expert")} className="text-left font-light transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Meet The Expert</button></li>
-              <li><button onClick={() => handleNavClick("faq")} className="text-left font-light transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Frequently Asked Questions</button></li>
+              <li><button onClick={() => handleNavClick("why-vastu")} className="text-left font-light cursor-pointer transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Process</button></li>
+              <li><button onClick={() => handleNavClick("why-vastu")} className="text-left font-light cursor-pointer transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Scientific Approach</button></li>
+              <li><button onClick={() => handleNavClick("expert")} className="text-left font-light cursor-pointer transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Meet The Expert</button></li>
+              <li><button onClick={() => handleNavClick("faq")} className="text-left font-light cursor-pointer transition-colors" style={{ color: "rgba(255,255,255,0.9)" }} onMouseEnter={e => (e.currentTarget.style.color="#C9A968")} onMouseLeave={e => (e.currentTarget.style.color="rgba(255,255,255,0.9)")}>Frequently Asked Questions</button></li>
             </ul>
           </div>
 

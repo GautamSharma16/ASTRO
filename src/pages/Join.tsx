@@ -354,7 +354,7 @@ export default function Join() {
               <div className="pt-2 space-y-3">
                 <button type="submit" disabled={loading}
                   className="w-full py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-full font-bold tracking-widest text-sm uppercase shadow-[0_10px_25px_rgba(197,145,84,0.3)] hover:shadow-[0_12px_30px_rgba(197,145,84,0.45)] transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 border border-gold-400 cursor-pointer hover:scale-[1.01]">
-                  {loading ? statusMessage : "Join Now"}
+                  {loading ? statusMessage : "Submit"}
                 </button>
                 
               </div>
