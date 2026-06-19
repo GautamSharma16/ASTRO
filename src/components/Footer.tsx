@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import AstroLogo from "../assets/Astro_logo.webp";
+import AstroLogo from "../assets/astro.png";
 
 export default function Footer() {
   const handleNavClick = (sectionId: string) => {
