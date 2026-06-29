@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AstroLogo from "../assets/astro1.png";
+import AstroLogo from "../assets/astro2.png";
 
 export default function Navbar() {
   return (
