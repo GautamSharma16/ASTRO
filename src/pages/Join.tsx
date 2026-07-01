@@ -4,32 +4,11 @@ import {
   ArrowRight, HelpCircle, Plus, Minus,
 } from "lucide-react";
 
-import { saveLead } from "../services/leadService";
 import { reviews, TestimonialCard } from "../components/Testimonials";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
-interface FormData {
-  name: string;
-  mobile: string;
-  profession: string;
-  email: string;
-  city: string;
-  dob: string;
-  birthTimeAccuracy: string;  // "Exact" | "Approximate" | "Not Known" | ""
-  birthTimeValue: string;      // actual HH:MM — shown only when Exact or Approximate
-  birthPlace: string;
-  issue1: string;
-  issue2: string;
-  issue3: string;
-}
-
-const EMPTY_FORM: FormData = {
-  name: "", mobile: "", profession: "", email: "",
-  city: "", dob: "", birthTimeAccuracy: "", birthTimeValue: "", birthPlace: "",
-  issue1: "", issue2: "", issue3: "",
-};
 
 const faqs = [
   {
@@ -58,49 +37,14 @@ const faqs = [
   },
 ];
 
-// Shared input class
-const inputCls = "w-full px-4 py-3 rounded-xl border border-gold-400/20 bg-gold-50/10 focus:bg-white focus:outline-none focus:border-gold-400 transition-colors text-sm text-gold-950 font-light";
-const labelCls = "text-xs font-semibold text-gold-900 uppercase tracking-wider flex items-center gap-1.5";
+
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 export default function Join() {
   const formRef = useRef<HTMLDivElement>(null);
-
-  const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
-  const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState("");
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
-  const scrollToForm = () =>
-    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatusMessage("Capturing cosmic details...");
-
-    await saveLead({
-      ...formData,
-      // Combine accuracy + value into a single birthTime string for the sheet
-      birthTime: formData.birthTimeAccuracy === "Not Known"
-        ? "Not Known"
-        : formData.birthTimeAccuracy && formData.birthTimeValue
-          ? `${formData.birthTimeValue} (${formData.birthTimeAccuracy})`
-          : formData.birthTimeAccuracy || "",
-    });
-    // The payment URL should be modified to redirect to ThankYou upon success if possible, 
-    // or simulate it here if Razorpay is not actively handling redirection in this mock.
-    // For now, we will navigate to /thank-you immediately since the actual Razorpay code might be elsewhere,
-    // or maybe the user just wants the redirect flow to be ready.
-    window.location.href = "/thank-you";
-  };
 
   // ---------------------------------------------------------------------------
   // Render
