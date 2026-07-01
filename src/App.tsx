@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Join from "./pages/Join";
 import ThankYou from "./pages/ThankYou";
+import NotFound from "./pages/NotFound";
 
 function AppContent() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/join" element={<Join />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
