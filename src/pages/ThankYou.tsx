@@ -1,7 +1,21 @@
-
+import { useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import AstroLogo from "../assets/astro2.png";
 
 export default function ThankYou() {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Razorpay automatically appends payment IDs to the URL on successful redirect.
+    // If there is no payment ID in the URL, this means someone just typed /thank-you manually.
+    const paymentId = searchParams.get("razorpay_payment_id") || searchParams.get("payment_id");
+
+    if (!paymentId) {
+      navigate("/");
+    }
+  }, [searchParams, navigate]);
+
   return (
     <div className="min-h-screen bg-luxury-gradient flex flex-col items-center justify-center p-6 sm:p-12 text-gold-900 font-serif">
       <div className="max-w-3xl w-full bg-white/90 backdrop-blur-sm p-8 sm:p-12 rounded-2xl border border-gold-400/30 shadow-2xl flex flex-col items-center text-center space-y-6">
