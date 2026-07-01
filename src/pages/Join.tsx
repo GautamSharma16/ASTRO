@@ -144,12 +144,11 @@ export default function Join() {
           </div>
           <div className="max-w-2xl mx-auto text-left">
             <ul className="space-y-4 text-gold-900/80 text-sm sm:text-base font-light list-disc pl-5">
-              <li>Book your call below and complete the application carefully.</li>
-              <li>We'll review your application and speak with you to see if you're a good fit</li>
-              <li>If selected and you miss your scheduled slot, you'll be permanently blacklisted.</li>
-              <li>Only 99 members will be accepted every 2 months.</li>
-              <li>The Mastermind will starts on 15/July/2026.</li>
-              <li>Only 3 slots left.</li>
+              <li>Book your call below by making the payment for the clarity call and complete the application carefully after payment.</li>
+              <li>We’ll review your application and speak with you to see if your floor plan is a good fit.</li>
+              <li>If selected, our team will review your floor plan with you over a call.</li>
+              <li>If you miss your scheduled slot, registration for the clarity call will be absorbed and won't be refunded.</li>
+              <li>Only 15 members will be accepted every month.</li>
               <li>Any questions? <a href="mailto:energyaacharyaashilpa@gmail.com" className="text-gold-600 font-medium hover:underline">energyaacharyaashilpa@gmail.com</a></li>
             </ul>
           </div>
